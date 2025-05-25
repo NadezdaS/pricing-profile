@@ -1,10 +1,12 @@
 # Pricing Profile
 
-This is a monorepo full-stack application that allows suppliers to add and remove products from the profile and adjust the price.
+This is a monorepo full-stack application that allows suppliers to create Pricing Profiles with selected set of products and set price adjustments for each product.
 <br />
+
 ### 🧰 Tech Stack
-- <b>Frontend</b>: React, Vite, TypeScript, Cypress
-- <b>Backend</b>: Node.js, Express, TypeScript, Jest
+- <b>Frontend</b>: React, Vite, TypeScript
+- <b>Backend</b>: Express, Node.js, TypeScript
+- <b>Testing<b>: Jest (unit testing), Cypress (E2E)
 - <b>Data storage</b>: in-memory Array stores the data while application is running
 <br />
 
