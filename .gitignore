@@ -1,0 +1,42 @@
+# Node modules
+node_modules/
+**/node_modules/
+
+# Build outputs
+dist/
+build/
+**/dist/
+**/build/
+
+# Environment variables
+.env
+.env.*.local
+
+# TypeScript build info
+*.tsbuildinfo
+**/*.tsbuildinfo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor directories and OS files
+.vscode/
+.idea/
+.DS_Store
+
+# Jest
+coverage/
+*.lcov
+
+# Cypress
+**/cypress/videos/
+**/cypress/screenshots/
+**/cypress/downloads/
+**/cypress/results/
+**/cypress/logs/
+**/cypress/reports/
+.cypress/
+
+# Vite
+**/.vite/
