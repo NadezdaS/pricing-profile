@@ -50,3 +50,70 @@ export const getPricingProfileById = (req: Request, res: Response): void => {
 	const adjustments = productAdjustments.filter(a => a.pricingProfileId === profile.id);
 	res.json({ profile, adjustments });
 };
+
+export const updatePricingProfileById = (req: Request, res: Response): void => {
+	const { id } = req.params;
+	const profileIndex = pricingProfiles.findIndex(p => p.id === id);
+
+	if (profileIndex === -1) {
+		res.status(404).json({ error: 'Pricing profile not found' });
+		return;
+	}
+
+	const existingProfile = pricingProfiles[profileIndex];
+	const updatedProfile = {
+		...existingProfile,
+		...req.body,
+		updatedAt: new Date(),
+	};
+	pricingProfiles[profileIndex] = updatedProfile;
+
+	// If productAdjustments need to be updated:
+	if (
+		'replaceAdjustments' in req.body &&
+		req.body.replaceAdjustments === true &&
+		req.body.productAdjustments
+	) {
+		// Remove old adjustments for this profile
+		for (let i = productAdjustments.length - 1; i >= 0; i--) {
+			if (productAdjustments[i].pricingProfileId === id) {
+				productAdjustments.splice(i, 1);
+			}
+		}
+
+		const newAdjustments = calculateAdjustments({
+			adjustmentMode: updatedProfile.adjustmentMode,
+			adjustmentDirection: updatedProfile.adjustmentDirection,
+			pricingProfileId: updatedProfile.id,
+			productAdjustments: req.body.productAdjustments,
+			products,
+		});
+
+		newAdjustments.forEach(adj => productAdjustments.push(adj));
+		res.json({ profile: updatedProfile, adjustments: newAdjustments });
+	}
+
+	res.json({ profile: updatedProfile });
+};
+
+export const deletePricingProfileById = (req: Request, res: Response): void => {
+	const { id } = req.params;
+	const profileIndex = pricingProfiles.findIndex(p => p.id === id);
+
+	if (profileIndex === -1) {
+		res.status(404).json({ error: 'Pricing profile not found' });
+		return;
+	}
+
+	// Remove profile
+	pricingProfiles.splice(profileIndex, 1);
+
+	// Remove associated adjustments
+	for (let i = productAdjustments.length - 1; i >= 0; i--) {
+		if (productAdjustments[i].pricingProfileId === id) {
+			productAdjustments.splice(i, 1);
+		}
+	}
+
+	res.status(204).send();
+};

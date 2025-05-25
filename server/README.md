@@ -25,6 +25,8 @@ Implemented API exposed via Swagger: http://localhost:8080/api-docs/#/ (change t
 - `GET /pricing-profiles`: Get all pricing profiles
 - `GET /pricing-profiles/{id}`: Get pricing profile by ID
 - `POST /pricing-profiles`: Create a new pricing profile
+- `PATCH /pricing-profiles/{id}`: Update a pricing profile
+- `DELETE /pricing-profiles/{id}`: Delete a pricing profile
 
 ## 📓 Design Decisions & Tradeoffs
 
@@ -43,7 +45,7 @@ Jest unit tests cover core logic (e.g., price adjustment calculations).
 
 ## 💡 If I Had More Time
 - Add API endpoints to add / update / delete products
-- Add API endpoints to update / delete pricing profiles
+- Add tests for API endpoints
 - Add database support (PostgreSQL or NoSQL, depends on the load)
 - Introduce input validation (e.g. with Zod)
 - Add support for user-specific saved profiles

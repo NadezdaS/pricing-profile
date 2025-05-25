@@ -12,7 +12,7 @@ This is a monorepo full-stack application that allows suppliers to create Pricin
 ### 💡 What I'd Improve with More Time
 
 > See what's been implemented in the ```client/README.md``` and ```server/README.md```
- - Add missing CRUD enpoints for products and pricing profiles
+ - Add more enpoints for products
  - Persistent backend with a real database (e.g., PostgreSQL)
  - Better form validation using schema libraries (e.g., Zod or Yup)
  - Pagination in the product table and list of products for scalability
