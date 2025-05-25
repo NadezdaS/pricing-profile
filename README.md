@@ -6,9 +6,21 @@ This is a monorepo full-stack application that allows suppliers to create Pricin
 ### 🧰 Tech Stack
 - <b>Frontend</b>: React, Vite, TypeScript
 - <b>Backend</b>: Express, Node.js, TypeScript
-- <b>Testing<b>: Jest (unit testing), Cypress (E2E)
+- <b>Testing</b>: Jest (unit testing), Cypress (E2E)
 - <b>Data storage</b>: in-memory Array stores the data while application is running
+
+### 💡 What I'd Improve with More Time
+
+> See what's been implemented in the ```client/README.md``` and ```server/README.md```
+ - Add missing CRUD enpoints for products and pricing profiles
+ - Persistent backend with a real database (e.g., PostgreSQL)
+ - Better form validation using schema libraries (e.g., Zod or Yup)
+ - Pagination in the product table and list of products for scalability
+ - Reusable components and a UI library for faster styling consistency
+ - Improve test coverage (e2e and unit testing)
+ - Enhanced filtering UX (e.g., search-as-you-type)
 <br />
+
 
 ## ✨ Prerequisites
 
